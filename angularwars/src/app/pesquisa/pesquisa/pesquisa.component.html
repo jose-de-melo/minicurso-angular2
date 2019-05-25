@@ -1,0 +1,18 @@
+<h2>Pesquisar Personagem</h2>
+<div>
+  <input type="text" [(ngModel)]="campo">
+  <button (click)="onPesquisar()">Pesquisar</button>
+  <br><br>
+  <div *ngFor="let item of resultado">
+    <app-personagem [personagem]="item"></app-personagem>
+      <br><br>
+  </div>
+  <div *ngIf="resultado != null && resultado.length != 0; else retornoNull">
+    <button (click)="paginaAnterior()" [disabled]="anterior == null">Anterior</button>
+    <button (click)="paginaProxima()" [disabled]="proxima == null">Proximo</button>
+  </div>
+</div>
+
+<ng-template #retornoNull>
+  Nenhum resultado.
+</ng-template>
